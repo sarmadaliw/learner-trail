@@ -11,7 +11,7 @@ class Subject(models.Model):
 
     def __str__(self):
         """Return a string representation of subject."""
-        return self.text[:50]
+        return self.name[:50]
     
 class Topic(models.Model):
     """A specific topic about the subject user is learning about."""
@@ -21,7 +21,7 @@ class Topic(models.Model):
     updated = models.DateTimeField(auto_now=True)
     def __str__(self):
         """Return a string representation of Topic."""
-        return self.text[:80]
+        return self.description[:80]
 
 class Entry(models.Model):
     """Entries specific to the topic user is learning about."""
@@ -31,5 +31,6 @@ class Entry(models.Model):
     updated = models.DateTimeField(auto_now=True)
     
     class Meta:
-	    verbose_name_plural = "entries"
+        verbose_name_plural = "entries"
+        ordering = ["-created"]
 
